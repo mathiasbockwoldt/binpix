@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Binpic</title>
+	<meta id="viewport" name="viewport"
+		content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<style>
+	</style>
+
+</head>
+
+<body>
+	<noscript>Please enable JavaScript in your web browser to view this page.</noscript>
+	<canvas id="visoutput"></canvas>
+
+	<br>
+
+	<button id="button_update">force update</button>
+	<output id="output_coord"></output>
+
+	<br>
+
+	Width: <input type="number" id="input_width" min="8" max="640" value="64"><br>
+	Zoom: <input type="number" id="input_zoom" min="1" max="10" value="6"><br>
+	Offset: <input type="number" id="input_offset" min="0" value="0"><br>
+	File: <input type="file" id="input_file">
+
+	<h3>Possible enhancements</h3>
+	<ul>
+		<li>Sliders for values</li>
+		<li>Stride as option (aka stepsize)</li>
+		<li>Interpret data as 1, 2, 4, 16, 24, or 32 bit (currently only 8 bit)</li>
+		<li>Add own palette
+			<ul>
+				<li>Mark special values (e.g. 0 and 255 for 8-bit-Interpretations) with outstanding colors</li>
+			</ul>
+		</li>
+		<li>Define dynamic max so data outside canvas is not touched (optimization)</li>
+		<li>Enable zoom &lt; 1</li>
+		<li>Enable change of canvas size</li>
+		<li>Make UI look like it was made in the 2020s</li>
+		<li>Some stats on the file? Histograms?</li>
+	</ul>
+</body>
+</html>

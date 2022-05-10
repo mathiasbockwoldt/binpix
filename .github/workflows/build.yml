@@ -1,0 +1,35 @@
+# - npm writes output to dist/
+# - variables below set correctly
+
+name: Build and deploy tool
+
+env:
+  MAIN_BRANCH: "main"
+  TARGET_BRANCH: "gh-pages"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - name: Install modules
+      run: npm ci
+    - name: Generate HTML
+      run: npm run build
+    - name: Deploy to gh-pages
+      if: ${{ github.event_name == 'push' && github.ref == format('refs/heads/{0}', env.MAIN_BRANCH) }}
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        force_orphan: true
