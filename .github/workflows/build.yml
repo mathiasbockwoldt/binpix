@@ -1,5 +1,4 @@
 # - npm writes output to dist/
-# - variables below set correctly
 
 name: Build and deploy tool
 
